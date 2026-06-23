@@ -1,0 +1,7 @@
+# 不上传应用源码与本地资源
+ios/
+index.html
+12.jpg
+.DS_Store
+*.xcuserstate
+**/xcuserdata/
