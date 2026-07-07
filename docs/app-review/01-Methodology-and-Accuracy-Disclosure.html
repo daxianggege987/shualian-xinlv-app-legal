@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Methodology &amp; Accuracy Disclosure · PulseRPPG (刷脸测心率)</title>
+<style>
+:root { --accent:#c41e3a; --text:#1a1a1a; --muted:#555; --border:#e0e0e0; }
+* { box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; margin:0; background:#f5f5f7; color:var(--text); line-height:1.65; font-size:15px; }
+.wrap { max-width:820px; margin:0 auto; padding:32px 24px 64px; }
+.card { background:#fff; border-radius:12px; padding:32px 36px; box-shadow:0 2px 12px rgba(0,0,0,.06); }
+h1 { font-size:1.65rem; margin:0 0 6px; color:var(--accent); }
+.meta { color:var(--muted); font-size:.9rem; margin-bottom:28px; }
+h2 { font-size:1.15rem; margin:28px 0 10px; color:var(--accent); border-bottom:1px solid var(--border); padding-bottom:6px; }
+h3 { font-size:1rem; margin:18px 0 8px; }
+p, li { margin:8px 0; }
+ul, ol { padding-left:1.35rem; }
+table { width:100%; border-collapse:collapse; margin:14px 0; font-size:.92rem; }
+th, td { border:1px solid var(--border); padding:8px 10px; text-align:left; vertical-align:top; }
+th { background:#fafafa; font-weight:600; }
+code { background:#f0f0f0; padding:1px 5px; border-radius:4px; font-size:.88em; }
+.note { background:#fff8e6; border-left:4px solid #f5a623; padding:12px 14px; margin:14px 0; font-size:.93rem; }
+.disclaimer { background:#fef2f2; border-left:4px solid var(--accent); padding:12px 14px; margin:14px 0; font-size:.93rem; }
+footer { text-align:center; margin-top:28px; color:var(--muted); font-size:.85rem; }
+.nav { text-align:center; margin-bottom:20px; font-size:.9rem; }
+.nav a { color:var(--accent); text-decoration:none; font-weight:600; }
+.nav a:hover { text-decoration:underline; }
+@media print { body { background:#fff; } .card { box-shadow:none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="nav">
+  <a href="02-Internal-Validation-Summary.html">Internal Validation Summary</a> ·
+  <a href="../privacy.html">Privacy Policy</a> ·
+  <a href="../support.html">Support</a>
+</div>
+<div class="card">
+<h1>Methodology &amp; Accuracy Disclosure</h1>
+<p class="meta">
+  App: <strong>刷脸测心率</strong> (PulseRPPG) · Bundle ID: <code>com.rppg.pulse</code><br>
+  Document version: 1.1 · Date: 7 July 2026 · For App Store Review (Guideline 1.4.1)<br>
+  App version: <strong>1.07 (12)</strong> · Face rPPG only
+  Developer: Zibo Tongzhe Information Technology Co., Ltd · Contact: 94722424@qq.com
+</p>
+
+<div class="disclaimer">
+<strong>Regulatory status:</strong> This app is a <strong>wellness and entertainment utility</strong>, not a medical device. It is not cleared or approved by the FDA, NMPA, or CE as a medical product. All outputs are <strong>reference estimates for personal wellness tracking</strong> and must not be used for diagnosis, treatment, or medication decisions.
+</div>
+
+<h2>1. Purpose of This Document</h2>
+<p>
+Apple App Review Guideline 1.4.1 requires clear disclosure of <strong>data, methodology, and the basis for accuracy-related statements</strong> when an app presents health-related measurements from device sensors.
+</p>
+<p>This document describes:</p>
+<ul>
+  <li>What the app measures and how (on-device pipeline)</li>
+  <li>Algorithm class, parameters, and signal-processing steps</li>
+  <li>Conditions required for reliable output</li>
+  <li><strong>Disclosed accuracy ranges</strong> and what we do <em>not</em> claim</li>
+  <li>References to peer-reviewed rPPG literature</li>
+</ul>
+<p>Companion document: <a href="02-Internal-Validation-Summary.html"><em>Internal Validation Summary</em></a>.</p>
+
+<h2>2. Product Scope &amp; Accuracy Claims Summary</h2>
+<table>
+  <thead>
+    <tr><th>Output</th><th>Claim type</th><th>What we disclose</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Heart rate (BPM)</strong></td>
+      <td>Wellness reference estimate</td>
+      <td>Derived from camera rPPG using published POS + spectral peak detection. Expected error vs. contact reference under recommended conditions: typically <strong>MAE 2–8 BPM (face)</strong> — see §8.</td>
+    </tr>
+    <tr>
+      <td><strong>HRV (RMSSD, ms)</strong></td>
+      <td>Trend reference only</td>
+      <td>Computed from inter-beat intervals (IBI) after peak detection. Higher variance than HR; suitable for personal trend comparison, not clinical HRV diagnosis.</td>
+    </tr>
+    <tr>
+      <td><strong>Wellness state index (状态)</strong></td>
+      <td>Derived wellness index</td>
+      <td>Monotonic mapping from normalized RMSSD (inverse relationship). Shown as trend reference only. <strong>Not</strong> a validated clinical stress or cortisol measure.</td>
+    </tr>
+    <tr>
+      <td><strong>Respiration (breaths/min)</strong></td>
+      <td>Algorithm retained; <strong>hidden from UI</strong> in v1.07+</td>
+      <td>RIIV pipeline exists in code but is not shown to users (unvalidated secondary vital).</td>
+    </tr>
+    <tr>
+      <td>SpO₂, blood pressure</td>
+      <td><strong>Removed from app UI</strong></td>
+      <td>Experimental features removed in v1.05+; not offered to users.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>3. System Architecture (On-Device Only)</h2>
+<p>All processing occurs locally on the user’s iPhone. No camera frames, face images, or measurement values are uploaded to developer servers.</p>
+<ol>
+  <li><strong>Capture:</strong> <code>AVCaptureSession</code> video at ~30 fps (front camera, face rPPG mode).</li>
+  <li><strong>ROI extraction:</strong> Apple Vision <code>VNDetectFaceLandmarksRequest</code> → forehead + bilateral cheek ROIs with YCbCr skin mask.</li>
+  <li><strong>Signal construction:</strong> Mean RGB (skin pixels) per frame → time series.</li>
+  <li><strong>Analysis:</strong> <code>RPPGProcessor</code> — POS → bandpass → FFT / peak detection.</li>
+  <li><strong>Quality gating:</strong> SNR-based quality level (1=weak, 2=good, 3=excellent). Beat-interval (HRV) and wellness state index shown only when quality ≥ 2. Respiration hidden from UI in v1.07+.</li>
+  <li><strong>Smoothing:</strong> Exponential smoothing on BPM/HRV for display stability.</li>
+  <li><strong>Video import (导入视频本地检测):</strong> Offline frame extraction (<code>AVAssetReader</code>) + Vision face ROI + same <code>RPPGProcessor</code> pipeline every 3 s. Presented as <strong>local on-device wellness trend reference</strong>, not accurate heart-rate measurement.</li>
+</ol>
+
+<h2>4. Theoretical Basis — Remote Photoplethysmography (rPPG)</h2>
+<p>
+Each cardiac cycle changes blood volume in superficial vessels, modulating reflected/transmitted light. A standard camera records subtle per-frame RGB changes. After spatial averaging over skin ROIs and temporal filtering, the pulse frequency can be estimated.
+</p>
+<p>This principle is established in peer-reviewed literature, e.g.:</p>
+<ul>
+  <li>Verkruysse et al. (2008), <em>Optics Express</em> — ambient-light remote plethysmography.</li>
+  <li>Poh et al. (2010), <em>IEEE TBME (PULSE)</em> — webcam pulse measurement.</li>
+  <li>de Haan &amp; Jeanne (2013), <em>IEEE TBME</em> — chrominance-based robust pulse rate (CHROM).</li>
+  <li>Wang et al. (2017), <em>IEEE TBMS</em> — POS and algorithmic principles of remote PPG.</li>
+</ul>
+
+<h2>5. Implemented Algorithms (Matches Source Code)</h2>
+
+<h3>5.1 Sampling &amp; Windowing</h3>
+<table>
+  <tr><td>Effective sample rate</td><td>30 Hz (camera frame timestamps)</td></tr>
+  <tr><td>Analysis window</td><td>12 s sliding window</td></tr>
+  <tr><td>Minimum data before output</td><td>6 s</td></tr>
+  <tr><td>Resampling</td><td>Linear interpolation to uniform 30 Hz grid</td></tr>
+</table>
+
+<h3>5.2 Face Mode — POS Pulse Signal</h3>
+<p>
+We implement the <strong>Plane-Orthogonal-to-Skin (POS)</strong> method (Wang et al., 2017). For each sliding sub-window of length <code>1.6 × fs</code> samples:
+</p>
+<ol>
+  <li>Normalize R, G, B by temporal mean in the window.</li>
+  <li>Construct <code>S₁ = Gₙ − Bₙ</code>, <code>S₂ = −2Rₙ + Gₙ + Bₙ</code>.</li>
+  <li>Compute <code>α = std(S₁) / std(S₂)</code>, pulse signal <code>H = S₁ + α·S₂</code>, mean-centered.</li>
+  <li>Overlap-add across windows to form pulse waveform.</li>
+</ol>
+
+<h3>5.3 Heart Rate Estimation</h3>
+<ul>
+  <li><strong>Spectral path:</strong> Detrend (0.6 s MA) → Hann window → 1024-point FFT → peak in 0.7–4.0 Hz (42–240 BPM) with parabolic interpolation; SNR = peak / band mean.</li>
+  <li><strong>Time-domain path:</strong> Bandpass 0.7–3.5 Hz → peak picking → median IBI → BPM = 60000/median(IBI).</li>
+  <li><strong>Fusion:</strong> When ≥6 peaks agree within 8 BPM, average spectral and time-domain estimates.</li>
+</ul>
+
+<h3>5.4 HRV (RMSSD)</h3>
+<p>
+From consecutive IBIs (300–1500 ms valid range):</p>
+<p><code>RMSSD = sqrt( mean( (IBIᵢ − IBIᵢ₋₁)² ) )</code> with ectopic beats excluded (|ΔIBI| &gt; 250 ms).</p>
+<p>Displayed only when quality ≥ 2 and ≥ 3 valid IBIs.</p>
+
+<h3>5.5 Respiration Rate</h3>
+<p>
+Respiratory Induced Intensity Variation (RIIV): green channel bandpassed 0.1–0.45 Hz; FFT peak converted to breaths/min. Valid range: 6–40/min.</p>
+
+<h3>5.6 Wellness State Index (状态)</h3>
+<p>
+<code>hrvNorm = clamp((RMSSD − 10) / 70, 0, 1)</code><br>
+<code>stateIndex = round((1 − hrvNorm) × 85 + 10)</code> → range ~10–95.</p>
+<p>This is a <strong>derived wellness trend index</strong>, not a psychometric or clinical stress test. UI labels use「Wellness 参考」/「趋势参考」only — no slow/fast/normal clinical judgments.</p>
+
+<h3>5.7 Face ROI (Vision Framework)</h3>
+<p>
+Landmark-based forehead + cheek regions; YCbCr skin threshold (Y 40–245, Cb 77–127, Cr 133–173) with subsampled pixels. Minimum 50 skin pixels required per frame.</p>
+
+<h2>6. Required Measurement Conditions (User Guidance)</h2>
+<table>
+  <thead>
+    <tr><th>Mode</th><th>Duration</th><th>Conditions</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Face rPPG</td>
+      <td>~15 s recommended</td>
+      <td>Even front lighting; face centered; minimize head motion and speech; no strong backlight or flicker.</td>
+    </tr>
+    <tr>
+      <td>Video import</td>
+      <td>≤ 5 min local video</td>
+      <td>On-device trend reference only; lower accuracy than live face rPPG</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>7. Factors That Degrade Accuracy</h2>
+<ul>
+  <li>Motion artifacts (head movement)</li>
+  <li>Poor or uneven illumination; screen flicker; saturated pixels</li>
+  <li>Very low or very high heart rate (&lt;50 or &gt;120 BPM at rest)</li>
+  <li>Makeup, filters, or non-skin pixels in ROI</li>
+  <li>Device-specific camera auto-exposure / white-balance variation</li>
+  <li>HRV/respiration: require longer stable windows; inherently noisier than HR</li>
+</ul>
+
+<h2>8. Disclosed Accuracy Ranges (Conservative)</h2>
+<p>
+The table below summarizes <strong>expected performance</strong> for an implementation of this algorithm class (POS + spectral HR), based on published benchmarks and our internal reference-comparison protocol (see companion validation document). These are <strong>wellness-reference bounds</strong>, not clinical device specifications.
+</p>
+<table>
+  <thead>
+    <tr><th>Metric</th><th>Test condition</th><th>Reference standard</th><th>Disclosed range</th><th>Literature / basis</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Heart rate</td>
+      <td>Face, resting, quality ≥ 2, 15 s</td>
+      <td>Contact PPG / chest strap</td>
+      <td>MAE typically <strong>2–8 BPM</strong>; r often &gt; 0.85 in controlled rest</td>
+      <td>Poh 2010; UBFC-rPPG benchmarks; de Haan 2013</td>
+    </tr>
+    <tr>
+      <td>HRV (RMSSD)</td>
+      <td>Rest, quality ≥ 2, ≥ 12 s IBI data</td>
+      <td>ECG or chest strap RMSSD</td>
+      <td>Relative trend useful; absolute error often <strong>±15–30%</strong> vs clinical ECG in mobile conditions</td>
+      <td>Camera sampling &amp; peak-detection limits; trend-only claim</td>
+    </tr>
+    <tr>
+      <td>Respiration</td>
+      <td>Hidden from UI v1.07+</td>
+      <td>N/A — not offered to users</td>
+      <td><strong>No user-facing claim</strong></td>
+      <td>Algorithm retained only; unvalidated secondary vital</td>
+    </tr>
+    <tr>
+      <td>Wellness state index</td>
+      <td>Derived from RMSSD</td>
+      <td>N/A (no clinical gold standard)</td>
+      <td><strong>No accuracy claim</strong> — ordinal wellness trend only</td>
+      <td>Disclosed as non-clinical index</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="note">
+<strong>Important:</strong> We instruct users that results are for wellness/entertainment reference only. The app displays persistent non-diagnostic disclaimers in the measurement UI and App Store metadata.
+</div>
+
+<h2>9. What We Do NOT Claim</h2>
+<ul>
+  <li>Medical-grade, diagnostic, or regulatory-cleared measurement</li>
+  <li>Detection or diagnosis of arrhythmia, hypertension, hypoxia, or any disease (rhythm alerts removed in v1.06+)</li>
+  <li>Accuracy in motion, clinical, or unsupervised emergency use</li>
+  <li>Equivalence to ECG, clinical pulse oximeter, or sphygmomanometer</li>
+  <li>Validated clinical accuracy for wellness state index, SpO₂, or blood pressure (removed or hidden from UI)</li>
+</ul>
+
+<h2>10. Data Privacy (Relevant to Methodology)</h2>
+<ul>
+  <li>Camera frames and face video are processed in real time in memory; <strong>not stored or uploaded</strong>.</li>
+  <li>Numeric results saved locally in JSON on device only.</li>
+  <li>Privacy Policy: <a href="https://daxianggege987.github.io/shualian-xinlv-app-legal/privacy.html">https://daxianggege987.github.io/shualian-xinlv-app-legal/privacy.html</a> — section 「人脸与摄像头数据」.</li>
+</ul>
+
+<h2>11. References</h2>
+<ol>
+  <li>Poh, M. Z., McDuff, D. J., &amp; Picard, R. W. (2010). Non-contact, automated cardiac pulse measurements using video imaging and blind source separation. <em>IEEE TBME</em>, 58(1), 7–11.</li>
+  <li>de Haan, G., &amp; Jeanne, V. (2013). Robust pulse rate from chrominance-based rPPG. <em>IEEE TBME</em>, 60(10), 2878–2886.</li>
+  <li>Wang, W., den Brinker, A. C., Stuijk, S., &amp; de Haan, G. (2017). Algorithmic principles of remote PPG. <em>IEEE TBMS</em>, 64(7), 1479–1491. (POS method)</li>
+  <li>Verkruysse, W., et al. (2008). Remote plethysmographic imaging using ambient light. <em>Optics Express</em>, 16(26), 21434–21445.</li>
+  <li>Bobbia, S., et al. (2019). Unsupervised skin tissue segmentation for remote photoplethysmography. <em>Pattern Recognition Letters</em> — UBFC-rPPG dataset.</li>
+  <li>Schäfer, A., &amp; Vagedes, J. (2013). How accurate is pulse rate variability as an estimate of heart rate variability? <em>International Journal of Cardiology</em>, 166(1), 15–29.</li>
+</ol>
+
+<h2>12. App Review Contact</h2>
+<p>
+For questions regarding this disclosure: <strong>94722424@qq.com</strong><br>
+Submitted with App version <strong>1.07 (12)</strong> for Guideline 1.4.1 review.
+</p>
+</div>
+<footer>
+<p>PulseRPPG · Methodology &amp; Accuracy Disclosure v1.1 · © 2026</p>
+<p><a href="02-Internal-Validation-Summary.html">Validation Summary</a> · <a href="../privacy.html">Privacy</a></p>
+<p>Print this page to PDF (Cmd+P) for App Store Connect attachment.</p>
+</footer>
+</div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-# App Store Connect 元数据（v1.05 build 6）
+# App Store Connect 元数据（v1.07 build 12）
 
 复制以下内容到 App Store Connect。使用 **Apple 标准 EULA** 时，描述末尾必须包含 EULA 链接。
 

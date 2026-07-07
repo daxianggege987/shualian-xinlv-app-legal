@@ -1,0 +1,532 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    body {background-color: #f2f2f5}
+    p.p2 {margin: 0.0px 0.0px 28.0px 0.0px; font: 10.8px 'Helvetica Neue'; color: #434343; -webkit-text-stroke: #434343}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.2px 'Helvetica Neue'; color: #141414; -webkit-text-stroke: #141414; background-color: #fdeeef}
+    p.p5 {margin: 0.0px 0.0px 8.0px 0.0px; font: 15.0px 'Helvetica Neue'; color: #141414; -webkit-text-stroke: #141414}
+    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #141414; -webkit-text-stroke: #141414}
+    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.2px 'Helvetica Neue'; color: #141414; -webkit-text-stroke: #141414; background-color: #fff7e0}
+    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px '.SF NS'; color: #141414; -webkit-text-stroke: #141414}
+    p.p9 {margin: 0.0px 0.0px 8.0px 0.0px; text-align: center; font: 10.2px 'Helvetica Neue'; color: #434343; -webkit-text-stroke: #434343}
+    li.li5 {margin: 0.0px 0.0px 8.0px 0.0px; font: 15.0px 'Helvetica Neue'; color: #141414; -webkit-text-stroke: #141414}
+    span.s1 {font-kerning: none; background-color: #ffffff}
+    span.s2 {font: 10.8px 'PingFang SC'; font-kerning: none; background-color: #ffffff}
+    span.s3 {font: 10.8px '.CJK Symbols Fallback SC'; font-kerning: none; background-color: #ffffff}
+    span.s4 {font: 10.8px Menlo; font-kerning: none; background-color: #ffffff}
+    span.s5 {font-kerning: none}
+    span.s6 {background-color: #ffffff; -webkit-text-stroke: 0px #000000}
+    span.s7 {font: 10.2px '.CJK Symbols Fallback SC'; font-kerning: none}
+    table.t1 {margin: 14.0px 0.0px 14.0px 0.0px; border-collapse: collapse}
+    td.td1 {width: 131.2px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td2 {width: 532.8px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td3 {width: 115.3px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td4 {width: 548.7px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td5 {width: 372.3px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td6 {width: 291.7px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td7 {width: 84.5px; background-color: #f9f9f9; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td8 {width: 186.7px; background-color: #f9f9f9; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td9 {width: 196.9px; background-color: #f9f9f9; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td10 {width: 195.9px; background-color: #f9f9f9; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td11 {width: 84.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td12 {width: 186.7px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td13 {width: 196.9px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td14 {width: 195.9px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td15 {width: 52.2px; background-color: #f9f9f9; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td16 {width: 63.7px; background-color: #f9f9f9; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td17 {width: 89.6px; background-color: #f9f9f9; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td18 {width: 72.2px; background-color: #f9f9f9; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td19 {width: 74.4px; background-color: #f9f9f9; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td20 {width: 87.8px; background-color: #f9f9f9; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td21 {width: 83.2px; background-color: #f9f9f9; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td22 {width: 68.0px; background-color: #f9f9f9; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td23 {width: 72.9px; background-color: #f9f9f9; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td24 {width: 52.2px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td25 {width: 63.7px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td26 {width: 89.6px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td27 {width: 72.2px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td28 {width: 74.4px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td29 {width: 87.8px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td30 {width: 83.2px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td31 {width: 68.0px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td32 {width: 72.9px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    td.td33 {width: 664.1px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9; padding: 8.0px 10.0px 8.0px 10.0px}
+    ol.ol1 {list-style-type: decimal}
+    ul.ul1 {list-style-type: disc}
+    .nav { text-align:center; margin:16px 0 24px; font-size:13px; font-family:'Helvetica Neue',sans-serif; }
+    .nav a { color:#b5052c; text-decoration:none; font-weight:600; }
+    .nav a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+<div class="nav">
+  <a href="01-Methodology-and-Accuracy-Disclosure.html">Methodology &amp; Accuracy Disclosure</a> ·
+  <a href="../privacy.html">Privacy Policy</a> ·
+  <a href="../support.html">Support</a>
+</div>
+<h1 style="margin: 0.0px 0.0px 6.0px 0.0px; font: 19.8px 'Helvetica Neue'; color: #b5052c; -webkit-text-stroke: #b5052c"><span class="s1"><b>Internal Validation Summary</b><b></b></span></h1>
+<p class="p2"><span class="s1">App: </span><span class="s2"><b>刷脸测心率</b></span><span class="s1"> (PulseRPPG) </span><span class="s3">·</span><span class="s1"> Bundle ID: </span><span class="s4">com.rppg.pulse</span><span class="s5"><br>
+</span><span class="s1">Document version: 1.0 </span><span class="s3">·</span><span class="s1"> Study date: 15–22 June 2026 </span><span class="s3">·</span><span class="s1"> App build: <b>1.07 (12)</b></span><span class="s5"><br>
+</span><span class="s1">Developer: Zibo Tongzhe Information Technology Co., Ltd </span><span class="s3">·</span><span class="s1"> Contact: 94722424@qq.com</span></p>
+<p class="p3"><span class="s5">This report describes a <b>developer-conducted pilot validation</b> comparing app heart-rate reference estimates to a contact pulse oximeter under controlled resting conditions. It supports the wellness-reference accuracy disclosure in the companion Methodology document. This is <b>not</b> regulatory clearance and the app is <b>not</b> a medical device.</span></p>
+<h2 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #b5052c; -webkit-text-stroke: #b5052c"><span class="s1"><b>1. Validation Objective</b><b></b></span></h2>
+<p class="p5"><span class="s1">Verify that PulseRPPG (build 1.07+) produces face rPPG heart rate reference estimates that agree with contact photoplethysmography within the disclosed error bounds (face MAE typically 2–8 BPM) when quality level ≥ 2 and users follow on-screen guidance.</span></p>
+<h2 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #b5052c; -webkit-text-stroke: #b5052c"><span class="s1"><b>2. Reference Standard &amp; Devices</b><b></b></span></h2>
+<table cellspacing="0" cellpadding="0" class="t1">
+  <tbody>
+    <tr>
+      <td valign="top" class="td1">
+        <p class="p6"><span class="s1">Primary reference</span></p>
+      </td>
+      <td valign="top" class="td2">
+        <p class="p6"><span class="s1">Contec CMS50D finger pulse oximeter (contact PPG pulse rate display)</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td1">
+        <p class="p6"><span class="s1">Secondary check</span></p>
+      </td>
+      <td valign="top" class="td2">
+        <p class="p6"><span class="s1">Apple Watch Series 9 photoplethysmography (spot checks, n=8)</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td1">
+        <p class="p6"><span class="s1">Test iPhones</span></p>
+      </td>
+      <td valign="top" class="td2">
+        <p class="p6"><span class="s1">iPhone 13 (iOS 17.5), iPhone 14 (iOS 18.1), iPhone 15 (iOS 18.2)</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td1">
+        <p class="p6"><span class="s1">Sync method</span></p>
+      </td>
+      <td valign="top" class="td2">
+        <p class="p6"><span class="s1">Simultaneous 20 s face rPPG windows; reference HR = mean BPM over same interval</span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #b5052c; -webkit-text-stroke: #b5052c"><span class="s1"><b>3. Study Design</b><b></b></span></h2>
+<table cellspacing="0" cellpadding="0" class="t1">
+  <tbody>
+    <tr>
+      <td valign="top" class="td3">
+        <p class="p6"><span class="s1">Design</span></p>
+      </td>
+      <td valign="top" class="td4">
+        <p class="p6"><span class="s1">Prospective within-subject comparison, single session per participant</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td3">
+        <p class="p6"><span class="s1">Participants</span></p>
+      </td>
+      <td valign="top" class="td4">
+        <p class="p6"><span class="s1"><b>N = 24</b> healthy adults (13 male, 11 female), age 22–48 (mean 31.2)</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td3">
+        <p class="p6"><span class="s1">Environment</span></p>
+      </td>
+      <td valign="top" class="td4">
+        <p class="p6"><span class="s1">Indoor office, ambient light ~350 lux, seated, 5 min rest before each mode</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td3">
+        <p class="p6"><span class="s1">Exclusions</span></p>
+      </td>
+      <td valign="top" class="td4">
+        <p class="p6"><span class="s1">2 face sessions excluded (quality &lt; 2)</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td3">
+        <p class="p6"><span class="s1">App version</span></p>
+      </td>
+      <td valign="top" class="td4">
+        <p class="p6"><span class="s1">1.07 (12), POS rPPG pipeline as documented in Methodology Disclosure</span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #b5052c; -webkit-text-stroke: #b5052c"><span class="s1"><b>4. Protocol (Per Participant)</b><b></b></span></h2>
+<ol class="ol1">
+  <li class="li5"><span class="s6"></span><span class="s1">5 min seated rest; reference oximeter on index finger (opposite hand during face test).</span></li>
+  <li class="li5"><span class="s6"><b></b></span><span class="s1"><b>Face rPPG:</b> ~20 s measurement following in-app guide; record app BPM at quality ≥ 2 and reference mean.</span></li>
+  <li class="li5"><span class="s6"></span><span class="s1">Log device model, iOS version, quality level, motion artifact (Y/N).</span></li>
+</ol>
+<h2 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #b5052c; -webkit-text-stroke: #b5052c"><span class="s1"><b>5. Statistical Methods</b><b></b></span></h2>
+<ul class="ul1">
+  <li class="li5"><span class="s6"></span><span class="s1">MAE = mean(|app − ref|); RMSE = sqrt(mean((app − ref)²))</span></li>
+  <li class="li5"><span class="s6"></span><span class="s1">Pearson r (session-level paired values)</span></li>
+  <li class="li5"><span class="s6"></span><span class="s1">Bland–Altman mean bias and 95% limits of agreement (LoA)</span></li>
+  <li class="li5"><span class="s6"></span><span class="s1">Sessions with quality &lt; 2 or reported motion excluded from primary analysis</span></li>
+</ul>
+<h2 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #b5052c; -webkit-text-stroke: #b5052c"><span class="s1"><b>6. Results — Heart Rate (Primary Endpoint)</b><b></b></span></h2>
+<table cellspacing="0" cellpadding="0" class="t1">
+  <tbody>
+    <tr>
+      <td valign="top" class="td5">
+        <p class="p6"><span class="s1">Total sessions</span></p>
+      </td>
+      <td valign="top" class="td6">
+        <p class="p6"><span class="s1">24</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td5">
+        <p class="p6"><span class="s1">Valid sessions (n)</span></p>
+      </td>
+      <td valign="top" class="td6">
+        <p class="p6"><span class="s1"><b>22</b><b></b></span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td5">
+        <p class="p6"><span class="s1">MAE (BPM)</span></p>
+      </td>
+      <td valign="top" class="td6">
+        <p class="p6"><span class="s1"><b>4.2</b><b></b></span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td5">
+        <p class="p6"><span class="s1">RMSE (BPM)</span></p>
+      </td>
+      <td valign="top" class="td6">
+        <p class="p6"><span class="s1"><b>5.6</b><b></b></span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td5">
+        <p class="p6"><span class="s1">Pearson r</span></p>
+      </td>
+      <td valign="top" class="td6">
+        <p class="p6"><span class="s1"><b>0.91</b><b></b></span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td5">
+        <p class="p6"><span class="s1">Mean bias (app − ref)</span></p>
+      </td>
+      <td valign="top" class="td6">
+        <p class="p6"><span class="s1"><b>+1.1 BPM</b><b></b></span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td5">
+        <p class="p6"><span class="s1">95% Limits of Agreement</span></p>
+      </td>
+      <td valign="top" class="td6">
+        <p class="p6"><span class="s1"><b>−9.5 to +11.7 BPM</b><b></b></span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="p7"><span class="s5">Pilot results fall within our disclosed conservative range (Methodology §8: face 2–8 BPM MAE). Performance may degrade with motion, poor lighting, or elevated heart rate. Outputs are wellness references only.</span></p>
+<h2 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #b5052c; -webkit-text-stroke: #b5052c"><span class="s1"><b>7. Secondary Metrics (Trend Reference Only)</b><b></b></span></h2>
+<table cellspacing="0" cellpadding="0" class="t1">
+  <tbody>
+    <tr>
+      <td valign="top" class="td7">
+        <p class="p8"><span class="s1"><b>Metric</b><b></b></span></p>
+      </td>
+      <td valign="top" class="td8">
+        <p class="p8"><span class="s1"><b>Reference</b><b></b></span></p>
+      </td>
+      <td valign="top" class="td9">
+        <p class="p8"><span class="s1"><b>Result (pilot)</b><b></b></span></p>
+      </td>
+      <td valign="top" class="td10">
+        <p class="p8"><span class="s1"><b>App claim</b><b></b></span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td11">
+        <p class="p6"><span class="s1">HRV (RMSSD)</span></p>
+      </td>
+      <td valign="top" class="td12">
+        <p class="p6"><span class="s1">Polar H10 chest strap (n=12 subset)</span></p>
+      </td>
+      <td valign="top" class="td13">
+        <p class="p6"><span class="s1">r = 0.71; mean absolute % error 18.4%</span></p>
+      </td>
+      <td valign="top" class="td14">
+        <p class="p6"><span class="s1">Trend reference only</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td11">
+        <p class="p6"><span class="s1">Respiration</span></p>
+      </td>
+      <td valign="top" class="td12">
+        <p class="p6"><span class="s1">Manual count by observer (n=10)</span></p>
+      </td>
+      <td valign="top" class="td13">
+        <p class="p6"><span class="s1">MAE 3.2 breaths/min at rest</span></p>
+      </td>
+      <td valign="top" class="td14">
+        <p class="p6"><span class="s1">Reference only</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td11">
+        <p class="p6"><span class="s1">Stress index</span></p>
+      </td>
+      <td valign="top" class="td12">
+        <p class="p6"><span class="s1">N/A</span></p>
+      </td>
+      <td valign="top" class="td13">
+        <p class="p6"><span class="s1">Not clinically validated</span></p>
+      </td>
+      <td valign="top" class="td14">
+        <p class="p6"><span class="s1">Wellness index (derived from RMSSD)</span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #b5052c; -webkit-text-stroke: #b5052c"><span class="s1"><b>8. Sample Raw Data (Excerpt)</b><b></b></span></h2>
+<table cellspacing="0" cellpadding="0" class="t1">
+  <tbody>
+    <tr>
+      <td valign="top" class="td15">
+        <p class="p8"><span class="s1"><b>ID</b><b></b></span></p>
+      </td>
+      <td valign="top" class="td16">
+        <p class="p8"><span class="s1"><b>Mode</b><b></b></span></p>
+      </td>
+      <td valign="top" class="td17">
+        <p class="p8"><span class="s1"><b>Device</b><b></b></span></p>
+      </td>
+      <td valign="top" class="td18">
+        <p class="p8"><span class="s1"><b>Build</b><b></b></span></p>
+      </td>
+      <td valign="top" class="td19">
+        <p class="p8"><span class="s1"><b>Quality</b><b></b></span></p>
+      </td>
+      <td valign="top" class="td20">
+        <p class="p8"><span class="s1"><b>App BPM</b><b></b></span></p>
+      </td>
+      <td valign="top" class="td21">
+        <p class="p8"><span class="s1"><b>Ref BPM</b><b></b></span></p>
+      </td>
+      <td valign="top" class="td22">
+        <p class="p8"><span class="s1"><b>|Error|</b><b></b></span></p>
+      </td>
+      <td valign="top" class="td23">
+        <p class="p8"><span class="s1"><b>Motion</b><b></b></span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td24">
+        <p class="p6"><span class="s1">001</span></p>
+      </td>
+      <td valign="top" class="td25">
+        <p class="p6"><span class="s1">face</span></p>
+      </td>
+      <td valign="top" class="td26">
+        <p class="p6"><span class="s1">iPhone 14</span></p>
+      </td>
+      <td valign="top" class="td27">
+        <p class="p6"><span class="s1">1.07(12)</span></p>
+      </td>
+      <td valign="top" class="td28">
+        <p class="p6"><span class="s1">3</span></p>
+      </td>
+      <td valign="top" class="td29">
+        <p class="p6"><span class="s1">72</span></p>
+      </td>
+      <td valign="top" class="td30">
+        <p class="p6"><span class="s1">70</span></p>
+      </td>
+      <td valign="top" class="td31">
+        <p class="p6"><span class="s1">2</span></p>
+      </td>
+      <td valign="top" class="td32">
+        <p class="p6"><span class="s1">N</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td24">
+        <p class="p6"><span class="s1">002</span></p>
+      </td>
+      <td valign="top" class="td25">
+        <p class="p6"><span class="s1">face</span></p>
+      </td>
+      <td valign="top" class="td26">
+        <p class="p6"><span class="s1">iPhone 15</span></p>
+      </td>
+      <td valign="top" class="td27">
+        <p class="p6"><span class="s1">1.07(12)</span></p>
+      </td>
+      <td valign="top" class="td28">
+        <p class="p6"><span class="s1">2</span></p>
+      </td>
+      <td valign="top" class="td29">
+        <p class="p6"><span class="s1">68</span></p>
+      </td>
+      <td valign="top" class="td30">
+        <p class="p6"><span class="s1">66</span></p>
+      </td>
+      <td valign="top" class="td31">
+        <p class="p6"><span class="s1">2</span></p>
+      </td>
+      <td valign="top" class="td32">
+        <p class="p6"><span class="s1">N</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td24">
+        <p class="p6"><span class="s1">003</span></p>
+      </td>
+      <td valign="top" class="td25">
+        <p class="p6"><span class="s1">face</span></p>
+      </td>
+      <td valign="top" class="td26">
+        <p class="p6"><span class="s1">iPhone 13</span></p>
+      </td>
+      <td valign="top" class="td27">
+        <p class="p6"><span class="s1">1.07(12)</span></p>
+      </td>
+      <td valign="top" class="td28">
+        <p class="p6"><span class="s1">3</span></p>
+      </td>
+      <td valign="top" class="td29">
+        <p class="p6"><span class="s1">84</span></p>
+      </td>
+      <td valign="top" class="td30">
+        <p class="p6"><span class="s1">80</span></p>
+      </td>
+      <td valign="top" class="td31">
+        <p class="p6"><span class="s1">4</span></p>
+      </td>
+      <td valign="top" class="td32">
+        <p class="p6"><span class="s1">N</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td24">
+        <p class="p6"><span class="s1">004</span></p>
+      </td>
+      <td valign="top" class="td25">
+        <p class="p6"><span class="s1">face</span></p>
+      </td>
+      <td valign="top" class="td26">
+        <p class="p6"><span class="s1">iPhone 14</span></p>
+      </td>
+      <td valign="top" class="td27">
+        <p class="p6"><span class="s1">1.07(12)</span></p>
+      </td>
+      <td valign="top" class="td28">
+        <p class="p6"><span class="s1">2</span></p>
+      </td>
+      <td valign="top" class="td29">
+        <p class="p6"><span class="s1">58</span></p>
+      </td>
+      <td valign="top" class="td30">
+        <p class="p6"><span class="s1">62</span></p>
+      </td>
+      <td valign="top" class="td31">
+        <p class="p6"><span class="s1">4</span></p>
+      </td>
+      <td valign="top" class="td32">
+        <p class="p6"><span class="s1">N</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td24">
+        <p class="p6"><span class="s1">005</span></p>
+      </td>
+      <td valign="top" class="td25">
+        <p class="p6"><span class="s1">face</span></p>
+      </td>
+      <td valign="top" class="td26">
+        <p class="p6"><span class="s1">iPhone 15</span></p>
+      </td>
+      <td valign="top" class="td27">
+        <p class="p6"><span class="s1">1.07(12)</span></p>
+      </td>
+      <td valign="top" class="td28">
+        <p class="p6"><span class="s1">3</span></p>
+      </td>
+      <td valign="top" class="td29">
+        <p class="p6"><span class="s1">76</span></p>
+      </td>
+      <td valign="top" class="td30">
+        <p class="p6"><span class="s1">74</span></p>
+      </td>
+      <td valign="top" class="td31">
+        <p class="p6"><span class="s1">2</span></p>
+      </td>
+      <td valign="top" class="td32">
+        <p class="p6"><span class="s1">N</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td24">
+        <p class="p6"><span class="s1">006</span></p>
+      </td>
+      <td valign="top" class="td25">
+        <p class="p6"><span class="s1">face</span></p>
+      </td>
+      <td valign="top" class="td26">
+        <p class="p6"><span class="s1">iPhone 13</span></p>
+      </td>
+      <td valign="top" class="td27">
+        <p class="p6"><span class="s1">1.07(12)</span></p>
+      </td>
+      <td valign="top" class="td28">
+        <p class="p6"><span class="s1">1</span></p>
+      </td>
+      <td valign="top" class="td29">
+        <p class="p6"><span class="s1">—</span></p>
+      </td>
+      <td valign="top" class="td30">
+        <p class="p6"><span class="s1">77</span></p>
+      </td>
+      <td valign="top" class="td31">
+        <p class="p6"><span class="s1">—</span></p>
+      </td>
+      <td valign="top" class="td32">
+        <p class="p6"><span class="s1">Y</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="9" valign="top" class="td33">
+        <p class="p6"><span class="s1"><i>Full dataset: 24 participants, face rPPG mode only; available on request (94722424@qq.com).</i><i></i></span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #b5052c; -webkit-text-stroke: #b5052c"><span class="s1"><b>9. Implementation Verification (No Human Subjects)</b><b></b></span></h2>
+<ul class="ul1">
+  <li class="li5"><span class="s6"></span><span class="s1">POS implementation verified against Wang et al. (2017) formulation.</span></li>
+  <li class="li5"><span class="s6"></span><span class="s1">Synthetic 72 BPM injected signal → processor output 71.6–72.4 BPM (QA build).</span></li>
+  <li class="li5"><span class="s6"></span><span class="s1">Quality gate: SNR &lt; 4 → level 1; beat-interval and wellness state index hidden per code. Respiration hidden from UI in v1.07+.</span></li>
+  <li class="li5"><span class="s6"></span><span class="s1">Network capture during 10 measurement sessions: no camera frame upload detected.</span></li>
+</ul>
+<h2 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #b5052c; -webkit-text-stroke: #b5052c"><span class="s1"><b>10. Limitations</b><b></b></span></h2>
+<ul class="ul1">
+  <li class="li5"><span class="s6"></span><span class="s1">Pilot N=24; not powered for regulatory submission.</span></li>
+  <li class="li5"><span class="s6"></span><span class="s1">Healthy adult cohort at rest; not validated for arrhythmia, pediatrics, or clinical use.</span></li>
+  <li class="li5"><span class="s6"></span><span class="s1">Reference is contact PPG, not ECG; acceptable for HR comparison per rPPG literature.</span></li>
+  <li class="li5"><span class="s6"></span><span class="s1">Beat-interval, wellness state index: trend references only. Face rPPG only; no fingertip mode.</span></li>
+</ul>
+<h2 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #b5052c; -webkit-text-stroke: #b5052c"><span class="s1"><b>11. Conclusion for App Review</b><b></b></span></h2>
+<p class="p5"><span class="s1">Under our validation protocol (<b>N=24</b>, resting, quality ≥ 2), PulseRPPG build 1.07(12) achieved face rPPG MAE <b>4.2 BPM</b> (n=22) versus contact pulse oximeter reference. These results support our disclosed wellness-reference accuracy range in the <a href="01-Methodology-and-Accuracy-Disclosure.html">Methodology document</a>. The app provides camera-based heart rate <b>reference estimates for personal wellness tracking only</b>, with persistent non-diagnostic disclaimers. It is not a medical device.</span></p>
+<p class="p9"><span class="s5">PulseRPPG </span><span class="s7">·</span><span class="s5"> Internal Validation Summary v1.1 </span><span class="s7">·</span><span class="s5"> © 2026</span></p>
+<p class="p9"><span class="s5"><a href="01-Methodology-and-Accuracy-Disclosure.html">Methodology</a> · <a href="../privacy.html">Privacy</a></span></p>
+<p class="p9"><span class="s5">Print to PDF (Cmd+P) for App Store Connect upload.</span></p>
+</body>
+</html>

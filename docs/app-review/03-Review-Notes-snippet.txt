@@ -1,0 +1,30 @@
+=== App Review Notes — Guideline 1.4.1 (paste into App Store Connect) ===
+
+Public methodology & validation (face rPPG, wellness reference only):
+
+1) Methodology & Accuracy Disclosure:
+   https://daxianggege987.github.io/shualian-xinlv-app-legal/app-review/01-Methodology-and-Accuracy-Disclosure.html
+
+2) Internal Validation Summary:
+   https://daxianggege987.github.io/shualian-xinlv-app-legal/app-review/02-Internal-Validation-Summary.html
+
+In-app: tap "?" on the measure screen → links to both documents + Privacy Policy.
+
+Changes in build 1.07 (12):
+• Removed all clinical normal/abnormal range language (no “slow/fast/normal” labels).
+• Measure screen shows “Wellness 参考” only; first-use disclaimer alert added.
+• Removed respiration from UI (unvalidated secondary vital).
+• Video import relabeled “导入视频本地检测” (local on-device analysis), not heart rate measurement.
+• Face rPPG only; no fingertip mode; no rhythm alerts.
+
+Summary:
+• Heart rate: disclosed wellness reference (pilot face MAE 4.2 BPM, n=22). Not medical diagnosis.
+• Beat-interval & state: trend indices only, not clinically validated.
+• On-device processing; no camera upload.
+• Privacy: https://daxianggege987.github.io/shualian-xinlv-app-legal/privacy.html
+
+Demo video attached. Contact: 94722424@qq.com
+
+=== 中文版（内部参考）===
+
+版本 1.07 build 12。说明页已重写，无临床正常值；测量页无偏慢/偏快；呼吸已隐藏；视频导入改为「导入视频本地检测」。

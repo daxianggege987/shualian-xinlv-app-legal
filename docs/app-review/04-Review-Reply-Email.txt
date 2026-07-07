@@ -1,0 +1,29 @@
+Subject: Resubmission v1.07 (12) — Guideline 1.4.1: removed clinical range language
+
+Hello App Review Team,
+
+Thank you for your continued review under Guideline 1.4.1. We have made additional changes in build 1.07 (12) based on your feedback.
+
+CHANGES IN THIS BUILD
+• Removed all in-app clinical normal/abnormal language (e.g. “slow/fast/normal”, fixed BPM or respiration ranges) from the info screen and live measurement UI.
+• Live labels now show “Wellness 参考” / “趋势参考” only — no health judgments.
+• First-use disclaimer alert before measurement; persistent non-diagnostic copy on measure screen.
+• Removed respiration from the measure UI (unvalidated secondary vital).
+• Video import relabeled “导入视频本地检测” (local on-device analysis) — not presented as accurate heart rate measurement; in-app warnings added.
+• Prior changes retained: face rPPG only; no fingertip mode; no rhythm/abnormality alerts or push notifications.
+
+METHODOLOGY (in-app + public URLs)
+Tap “?” on the measure screen for links to:
+1) https://daxianggege987.github.io/shualian-xinlv-app-legal/app-review/01-Methodology-and-Accuracy-Disclosure.html
+2) https://daxianggege987.github.io/shualian-xinlv-app-legal/app-review/02-Internal-Validation-Summary.html
+
+Heart rate is a disclosed wellness reference only (face rPPG, pilot MAE 4.2 BPM). Beat-interval and state indices are trend references, not clinically validated.
+
+Privacy: https://daxianggege987.github.io/shualian-xinlv-app-legal/privacy.html
+
+Please test on iPhone. Demo video attached. Contact: 94722424@qq.com
+
+Best regards,
+[Your Name]
+Zibo Tongzhe Information Technology Co., Ltd.
+刷脸测心率 (PulseRPPG) · com.rppg.pulse
